@@ -27,6 +27,7 @@ public class Player implements Attackable,Dieble {
 
             end();
         } else {
+            System.out.println("Select Space station to attack...");
             System.out.println("1. Daedalus" + "\n" + "2. Terra Venture" + "\n" + "3. Specter");
 
             int choice = sc.nextInt();
@@ -67,7 +68,7 @@ public class Player implements Attackable,Dieble {
 
     }
     public void choose_weapon() {
-        System.out.println("how you want to attack?");
+        System.out.println("Which Weapon would you like to use?");
         System.out.println("1."+weapon[0] + "\n" + "2." + weapon[1]);
         choice = sc.nextInt();
     }
@@ -136,7 +137,9 @@ public class Player implements Attackable,Dieble {
                 playerDamage = new java.util.Random().nextInt(3);
             } else if (weapon[1].equals("Gauss Guns")) {
                 playerDamage = new java.util.Random().nextInt(7) + 1;
-            } else if (weapon[1].equals("big sword")) {
+            } else if (weapon[1].equals("Plasma(AI based Plasma Destroyer)")) {
+                playerDamage = new java.util.Random().nextInt(7) + 1;
+            } else if (weapon[1].equals("Lasers")) {
                 playerDamage = new java.util.Random().nextInt(7) + 1;
             }
 
@@ -208,20 +211,19 @@ public class Player implements Attackable,Dieble {
         System.out.println("Heading back to Babylon 5");
         flying();
         if (daedalus) {
-//
+             playerHP=10;
             planet.replace("Daedalus", "true");
             daedalus = false;
-            System.out.println("Select Space station to attack...");
             planet();
         } else if (terraVenture) {
+            playerHP=10;
             planet.replace("TerraVenture", "true");
             terraVenture = false;
-            System.out.println("Select Space station to attack...");
             planet();
         } else if (specter) {
+            playerHP=10;
             planet.replace("Specter", "true");
             specter = false;
-            System.out.println("Select Space station to attack...");
             planet();
         }
     }

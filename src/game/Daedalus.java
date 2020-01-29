@@ -27,7 +27,6 @@ public class Daedalus implements Attackable,Dieble {
         p.hold();
         System.out.println("Daedalus commander is ready with Gunner space ship for the war");
         System.out.println("Wish you good luck!!!");
-        System.out.println("Which Weapon would you like to use?");
         p.choose_weapon();
         Player.daedalus=true;
         p.attack();
@@ -69,9 +68,9 @@ public class Daedalus implements Attackable,Dieble {
         opponentDamage = new java.util.Random().nextInt(4) + 1;
         p.hold();
         System.out.println("The hawk attacked you and gave " + opponentDamage + " damage!");
-        spaceShipHp = p.getPlayerHP();
+        spaceShipHp = Player.getPlayerHP();
         spaceShipHp = spaceShipHp - opponentDamage;
-        p.setPlayerHP(spaceShipHp);
+        Player.setPlayerHP(spaceShipHp);
         System.out.println("Your space ship HP: " + spaceShipHp);
     }
 
@@ -82,5 +81,6 @@ public class Daedalus implements Attackable,Dieble {
         System.out.println("Bravo!!!You defeated the Hawk!");
         System.out.println("Congratulation!!!The Daedalus space station is yours.");
         p.win();
+
     }
 }

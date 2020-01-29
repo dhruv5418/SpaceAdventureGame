@@ -29,7 +29,6 @@ public class Specter implements Attackable,Dieble {
         p.hold();
         System.out.println("Specter commander is ready with Slave-1 space ship for the war");
         System.out.println("Wish you good luck!!!");
-        System.out.println("Which Weapon would you like to use?");
         p.choose_weapon();
         Player.specter=true;
         p.attack();
@@ -43,9 +42,9 @@ public class Specter implements Attackable,Dieble {
         opponentDamage = new java.util.Random().nextInt(4) + 1;
         p.hold();
         System.out.println("The hawk attacked you and gave " + opponentDamage + " damage!");
-        spaceShipHp = p.getPlayerHP();
+        spaceShipHp = Player.getPlayerHP();
         spaceShipHp = spaceShipHp - opponentDamage;
-        p.setPlayerHP(spaceShipHp);
+        Player.setPlayerHP(spaceShipHp);
         System.out.println("Your space ship HP: " + spaceShipHp);
     }
 

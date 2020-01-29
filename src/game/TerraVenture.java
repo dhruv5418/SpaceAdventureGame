@@ -27,7 +27,6 @@ public class TerraVenture implements Attackable,Dieble {
         p.hold();
         System.out.println("Terra Venture commander is ready with Ghost space ship for the war");
         System.out.println("Wish you good luck!!!");
-        System.out.println("Which Weapon would you like to use?");
         p.choose_weapon();
         Player.terraVenture=true;
         p.attack();
@@ -39,9 +38,9 @@ public class TerraVenture implements Attackable,Dieble {
         opponentDamage = new java.util.Random().nextInt(4) + 1;
         p.hold();
         System.out.println("The hawk attacked you and gave " + opponentDamage + " damage!");
-        spaceShipHp = p.getPlayerHP();
+        spaceShipHp = Player.getPlayerHP();
         spaceShipHp = spaceShipHp - opponentDamage;
-        p.setPlayerHP(spaceShipHp);
+        Player.setPlayerHP(spaceShipHp);
         System.out.println("Your space ship HP: " + spaceShipHp);
 
     }
