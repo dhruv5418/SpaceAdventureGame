@@ -133,14 +133,19 @@ public class Player implements Attackable,Dieble {
             playerDamage = new java.util.Random().nextInt(3);
         } else if (choice == 2) {
             Player.Moves = Player.Moves + 1;
-            if (weapon[1].equals("Ion Weapons")) {
-                playerDamage = new java.util.Random().nextInt(3);
-            } else if (weapon[1].equals("Gauss Guns")) {
-                playerDamage = new java.util.Random().nextInt(7) + 1;
-            } else if (weapon[1].equals("Plasma(AI based Plasma Destroyer)")) {
-                playerDamage = new java.util.Random().nextInt(7) + 1;
-            } else if (weapon[1].equals("Lasers")) {
-                playerDamage = new java.util.Random().nextInt(7) + 1;
+            switch (weapon[1]) {
+                case "Ion Weapons":
+                    playerDamage = new java.util.Random().nextInt(3);
+                    break;
+                case "Gauss Guns":
+                    playerDamage = new java.util.Random().nextInt(7) + 1;
+                    break;
+                case "Plasma(AI based Plasma Destroyer)":
+                    playerDamage = new java.util.Random().nextInt(7) + 1;
+                    break;
+                case "Lasers":
+                    playerDamage = new java.util.Random().nextInt(7) + 1;
+                    break;
             }
 
         } else {
@@ -203,7 +208,7 @@ public class Player implements Attackable,Dieble {
         playerHP = 10;
         setPlayerHP(playerHP);
         hold();
-        i.introduuction();
+        i.introduction();
     }
 
     public void win(){
@@ -227,6 +232,25 @@ public class Player implements Attackable,Dieble {
             planet();
         }
     }
+
+/*    public void quit(){
+        System.out.println("Are you sure you want to exit?");
+        System.out.println("1. Yes"+"\n"+"2. No");
+        choice=sc.nextInt();
+        if(choice==1){
+            System.out.println("Thank you for playing...");
+            System.out.println("Hope to see you soon...");
+            System.out.println("Player Name :" +Introduction.PlayerName);
+            System.out.println("Total moves :" + Moves);
+            System.exit(1);
+        }else if(choice==2){
+
+
+        }else{
+            quit();
+        }
+
+    }*/
 
     public void end(){
         hold();

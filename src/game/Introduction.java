@@ -17,7 +17,7 @@ public class Introduction {
     public Introduction() {
     }
 
-    public void playersetup() {
+    public void playerSetup() {
 
         System.out.println("enter your name");
         PlayerName = sc.nextLine();
@@ -33,9 +33,9 @@ public class Introduction {
     /**
      *
      */
-    public  void introduuction() {
+    public  void introduction() {
         Player p = new Player();
-        System.out.println("Welcome to the world of Space Guardian.");
+        System.out.println("Welcome to the world of Space Adventure");
         System.out.print("You are on the space station named Babylon 5 Station." + "\n"
                 + "You are the commander of this station and you have to protect the citizens of Babylon 5 Station. " + "\n"
                 + "You have to destroy 3 rival space station." + "\n"
