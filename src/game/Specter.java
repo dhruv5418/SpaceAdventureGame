@@ -69,7 +69,10 @@ public class Specter implements Attackable,Dieble {
             Player.weapon[1]="Plasma(AI based Plasma Destroyer)";
             System.out.println("you have chosen Star Destroyer spaceship for attack on Specter. ");
 
-        } else {
+        }else if(choice==0){
+            p.quit();
+        }
+        else {
             chooseSpaceShip();
         }
 

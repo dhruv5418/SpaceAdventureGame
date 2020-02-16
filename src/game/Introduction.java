@@ -36,6 +36,7 @@ public class Introduction {
     public  void introduction() {
         Player p = new Player();
         System.out.println("Welcome to the world of Space Adventure");
+        p.hold();
         System.out.print("You are on the space station named Babylon 5 Station." + "\n"
                 + "You are the commander of this station and you have to protect the citizens of Babylon 5 Station. " + "\n"
                 + "You have to destroy 3 rival space station." + "\n"
@@ -45,6 +46,8 @@ public class Introduction {
 
         Player.planet.put("TerraVenture", "false");
         Player.planet.put("Specter", "false");
+        p.hold();
+        System.out.println("You can always press 0 while choosing the option for quit the game... ");
         p.planet();
     }
 }

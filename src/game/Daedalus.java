@@ -57,6 +57,8 @@ public class Daedalus implements Attackable,Dieble {
             Player.weapon[1]="Gauss Guns";
             System.out.println("you have chosen Gunstar spaceship for attack on Daedalus. ");
 
+        }else if(choice==0){
+            p.quit();
         } else {
             chooseSpaceShip();
         }

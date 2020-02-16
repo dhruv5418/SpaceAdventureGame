@@ -53,7 +53,9 @@ public class Player implements Attackable,Dieble {
                 } else {
                  new Specter().specter();
                 }
-            } else {
+            } else if(choice==0){
+                quit();
+            }else {
                 planet();
             }
 
@@ -88,7 +90,10 @@ public class Player implements Attackable,Dieble {
             flying();
             flying();
             playerHP=playerHP-2;
-        }else{
+        }else if(choice==0){
+            quit();
+        }
+        else{
             warpDrive();
         }
     }
@@ -101,6 +106,8 @@ public class Player implements Attackable,Dieble {
         }
         else if(choice==2){
             System.out.println("Ops!!!Power is low."+"\n"+"Hope for the best. ");
+        }else if(choice==0){
+            quit();
         }
         else {
             recoverHP();
@@ -148,7 +155,10 @@ public class Player implements Attackable,Dieble {
                     break;
             }
 
-        } else {
+        }else if(choice==0){
+            quit();
+        }
+        else {
             choose_weapon();
         }
         hold();
@@ -233,7 +243,7 @@ public class Player implements Attackable,Dieble {
         }
     }
 
-/*    public void quit(){
+   public void quit(){
         System.out.println("Are you sure you want to exit?");
         System.out.println("1. Yes"+"\n"+"2. No");
         choice=sc.nextInt();
@@ -250,7 +260,7 @@ public class Player implements Attackable,Dieble {
             quit();
         }
 
-    }*/
+    }
 
     public void end(){
         hold();

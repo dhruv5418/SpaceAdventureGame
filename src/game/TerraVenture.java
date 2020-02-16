@@ -66,7 +66,10 @@ public class TerraVenture implements Attackable,Dieble {
             Player.weapon[1]="Lasers";
             System.out.println("you have chosen Enterprise spaceship for attack on Terra Venture. ");
 
-        } else {
+        }else if(choice==0){
+            p.quit();
+        }
+        else {
             chooseSpaceShip();
         }
 
