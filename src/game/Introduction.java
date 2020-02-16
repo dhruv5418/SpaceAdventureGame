@@ -1,37 +1,56 @@
 package game;
 
-import java.sql.SQLOutput;
+import javax.swing.*;
+import java.text.SimpleDateFormat;
 import java.util.Scanner;
+public class Introduction extends JPanel  {
 
-public class Introduction {
-
+    /**
+     * Store player name.
+     */
     public static String PlayerName;
     /**
-     *
+     *store player age.
      */
     public static int Age;
+    /**
+     * store player gender
+     */
     public static String Gender;
-    public static String Birthdate;
+    /**
+     * store player birth date.
+     */
+    public static String BirthDate;
+    /**
+     * object of scanner class for user input.
+     */
     Scanner sc = new Scanner(System.in);
 
+    /**
+     * constructor
+     */
     public Introduction() {
     }
 
+
+    /**
+     * method to get player's details
+     */
     public void playerSetup() {
 
-        System.out.println("enter your name");
+        System.out.println("Enter your name");
         PlayerName = sc.nextLine();
-        System.out.println("enter your age");
+        System.out.println("Enter your age");
         Age = sc.nextInt();
-        System.out.println("Enter your Birth date (dd/mm/yy):");
-        Birthdate = sc.next();
-        System.out.println("enter your Gender");
+        System.out.println("Enter your Birth date (mm-dd-yyyy):");
+        BirthDate = sc.next();
+        System.out.println("Enter your Gender");
         Gender = sc.next();
 
     }
 
     /**
-     *
+     * contains the introduction part of game.
      */
     public  void introduction() {
         Player p = new Player();

@@ -6,21 +6,64 @@ import java.util.concurrent.TimeUnit;
 
 public class Player implements Attackable,Dieble {
 
+    /**
+     * count the total moves used by player.
+     */
     public static int Moves = 0;
+    /**
+     * player health
+     */
     public static int playerHP = 10;
+    /**
+     * array of string stores the space ship selected by player.
+     */
     public static String[] spaceships = { "", "", "" };
+    /**
+     * array of string stores the weapon selected by player for attack.
+     */
     public static String[] weapon = {"","",""};
+    /**
+     * opponent space ship health.
+     */
     int opponentHp = 10;
+    /**
+     * HashMap of string to prevent re-attack on opponent space ships.
+     */
     public static HashMap<String, String> planet = new HashMap<>();
+    /**
+     * object of scanner class for user input
+     */
     Scanner sc = new Scanner(System.in);
+    /**
+     * to store choice made by user
+     */
     int choice;
-    Introduction i=new Introduction();
+    /**
+     * store total life of player for the game.
+     */
+    int life=3;
+    /**
+     * boolean to prevent re-attack on daedalus.
+     */
     public static boolean daedalus  = false;
+    /**
+     * boolean to prevent re-attack on terraVenture.
+     */
     public static boolean terraVenture = false;
+    /**
+     * boolean to prevent re-attack on specter.
+     */
     public static boolean specter = false;
+
+    /**
+     * constructor
+     */
     public Player() {
     }
 
+    /**
+     * contains code for choosing opponent space ship to attack.
+     */
     public void planet() {
         if ((planet.get("Daedalus").equals("true")) && (planet.get("TerraVenture").equals("true"))
                 && (planet.get("Specter").equals("true"))) {
@@ -61,22 +104,32 @@ public class Player implements Attackable,Dieble {
 
         }
     }
+
+    /**
+     *  fly method with some text.
+     */
     public void flying() {
         hold();
         System.out.println("Space ship is cruising through the galaxies...");
         hold();
         System.out.println("Space ship is cruising through the galaxies...");
         hold();
-
     }
+
+    /**
+     * contains code for choosing weapon to attack on opponent space ship.
+     */
     public void choose_weapon() {
         System.out.println("Which Weapon would you like to use?");
         System.out.println("1."+weapon[0] + "\n" + "2." + weapon[1]);
         choice = sc.nextInt();
     }
 
+    /**
+     * contains cod for wrap drive mode.
+     */
     public void warpDrive(){
-        System.out.println("Wolud you like to turn on Warp drive mode?");
+        System.out.println("Would you like to turn on Warp drive mode?");
         System.out.println("Tips:Warp drive mode consume more power but helps to travel faster than speed of light!!!");
         System.out.println("1. Yes" + "\n" + "2. No");
         choice=sc.nextInt();
@@ -97,6 +150,10 @@ public class Player implements Attackable,Dieble {
             warpDrive();
         }
     }
+
+    /**
+     * health recovery code.
+     */
     public void recoverHP(){
         System.out.println("1. Yes" + "\n" + "2. No");
         choice=sc.nextInt();
@@ -114,6 +171,9 @@ public class Player implements Attackable,Dieble {
         }
     }
 
+    /**
+     * method to take sleep of thread.
+     */
     public void hold() {
         try {
             TimeUnit.SECONDS.sleep(1);
@@ -123,15 +183,27 @@ public class Player implements Attackable,Dieble {
         }
     }
 
+    /**
+     * getter method for playeHp.
+     * @return player's healh.
+     */
     public static int getPlayerHP() {
         return playerHP;
     }
 
+    /**
+     * setter method for playeHp.
+     * @param playerHP player's healh.
+     *
+     */
     public static void setPlayerHP(int playerHP) {
         Player.playerHP = playerHP;
     }
 
 
+    /**
+     * contains code for attack by player's space ship on opponent space ship.
+     */
     @Override
     public void attack() {
         int playerDamage = 0;
@@ -206,21 +278,57 @@ public class Player implements Attackable,Dieble {
 
     }
 
+    /**
+     * contains code for player's lose.
+     */
     @Override
     public void die() {
 
         System.out.println("Bad Luck!!!Your space ship is destroyed.");
-        System.out.println("\n\nGAME OVER");
-        System.out
-                .println("Remember that some weapon has higher killing strength"+"\n"+"You can always choose different weapon!!");
-        System.out.println(
-                "Don't worry, the space station which you won will be yours, unless and until you restart the game");
-        playerHP = 10;
-        setPlayerHP(playerHP);
         hold();
-        i.introduction();
+        System.out.println("Remember that some weapon has higher killing strength"+"\n"+"You can always choose different weapon!!");
+        hold();
+        System.out.println("Don't worry, the space station which you won will be yours, unless and until you restart the game");
+        hold();
+        System.out.println("Available Life="+life);
+        hold();
+        if (life>0){
+
+            System.out.println("Do you want to play again?");
+            hold();
+            System.out.println("1. Yes"+"\n"+"2. No");
+            choice=sc.nextInt();
+            if(choice==1){
+                life--;
+                playerHP = 10;
+                setPlayerHP(playerHP);
+                planet();
+            }else if (choice==2){
+                quit();
+            }else if(choice==0){
+                quit();
+            }
+            else {
+                die();
+            }
+
+        }else{
+            hold();
+            System.out.println("\n\nGAME OVER");
+            hold();
+            System.out.println("\nBetter luck next time!!!");
+            hold();
+            System.out.println("Thank you for playing...");
+            System.out.println("Player Name :" +Introduction.PlayerName);
+            System.out.println("Total moves :" + Moves);
+            System.exit(1);
+        }
+
     }
 
+    /**
+     * contains code for players after completion of successful attack .
+     */
     public void win(){
         System.out.println("victory!!!"+"\n"+"Celebration Time");
         System.out.println("Heading back to Babylon 5");
@@ -243,6 +351,9 @@ public class Player implements Attackable,Dieble {
         }
     }
 
+    /**
+     * contains code for quiting the game by player.
+     */
    public void quit(){
         System.out.println("Are you sure you want to exit?");
         System.out.println("1. Yes"+"\n"+"2. No");
@@ -254,14 +365,16 @@ public class Player implements Attackable,Dieble {
             System.out.println("Total moves :" + Moves);
             System.exit(1);
         }else if(choice==2){
-
-
+            return;
         }else{
             quit();
         }
 
     }
 
+    /**
+     * contains code after complete victory at the end of game.
+     */
     public void end(){
         hold();
         System.out.println("Congratulations!! you have won all 3 space station!!!");

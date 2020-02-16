@@ -3,17 +3,38 @@ package game;
 import java.util.Scanner;
 
 public class Specter implements Attackable,Dieble {
+    /**
+     * object of scanner class for user input
+     */
     Scanner sc = new Scanner(System.in);
+    /**
+     * object of player class.
+     */
     Player p = new Player();
+    /**
+     * object of Introduction class.
+     */
     Introduction i=new Introduction();
+    /**
+     * to store choice made by user
+     */
     int choice;
+    /**
+     * player health
+     */
     int spaceShipHp;
 
+    /**
+     * constructor
+     */
     public Specter() {
-
 
     }
 
+    /**
+     * contains full process to attack on opponent space ship.
+     * contains method calling to player class.
+     */
     public void specter() {
         Player.Moves = Player.Moves + 1;
         System.out.println("You are about to attack on Specter Space Station");
@@ -35,11 +56,14 @@ public class Specter implements Attackable,Dieble {
 
     }
 
+    /**
+     * code for attack by opponent space ship on player's space ship
+     */
     @Override
     public void attack() {
 
         int opponentDamage = 0;
-        opponentDamage = new java.util.Random().nextInt(4) + 1;
+        opponentDamage = new java.util.Random().nextInt(3) + 1;
         p.hold();
         System.out.println("The hawk attacked you and gave " + opponentDamage + " damage!");
         spaceShipHp = Player.getPlayerHP();
@@ -48,6 +72,9 @@ public class Specter implements Attackable,Dieble {
         System.out.println("Your space ship HP: " + spaceShipHp);
     }
 
+    /**
+     * use to choose space ship for attack.
+     */
     @Override
     public void chooseSpaceShip() {
         Player.Moves = Player.Moves + 1;
@@ -80,6 +107,9 @@ public class Specter implements Attackable,Dieble {
     }
 
 
+    /**
+     * code for successful attack on opponent and congratulation.
+     */
     @Override
     public void die() {
 
