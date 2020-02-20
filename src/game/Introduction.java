@@ -1,20 +1,20 @@
 package game;
-
-import javax.swing.*;
 import java.util.Scanner;
 /**
  * Contains all the details of Player and introduction part of game.
  */
-public class Introduction extends JPanel  {
+public class Introduction {
 
     /**
      * Store player name.
      */
     public static String PlayerName;
+
     /**
      *store player age.
      */
     public static int Age;
+
     /**
      * store player gender
      */
@@ -23,6 +23,7 @@ public class Introduction extends JPanel  {
      * store player birth date.
      */
     public static String BirthDate;
+
     /**
      * object of scanner class for user input.
      */
