@@ -3,8 +3,8 @@ package game;
 import java.util.Scanner;
 
 /**
- * class Daedalus which contains all methods and attributes for attack on Daedalus space-station.
- * implemented from Attackable,GameOver interfaces.
+ * Class Daedalus which contains all methods and attributes for attack on Daedalus space-station.
+ * Implemented from Attackable,GameOver interfaces.
  */
 public class Daedalus implements Attackable,GameOver {
 

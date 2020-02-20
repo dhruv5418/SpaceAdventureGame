@@ -364,7 +364,7 @@ public class Player implements GameOver {
             System.out.println("Total moves :" + Moves);
             System.exit(1);
         }else if(choice==2){
-            return;
+          die();
         }else{
             quit();
         }

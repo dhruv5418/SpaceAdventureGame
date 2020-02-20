@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 
 /**
- * class Specter which contains all methods and attributes for attack on Specter space-station.
- * implemented from Attackable,GameOver interfaces.
+ * Class Specter which contains all methods and attributes for attack on Specter space-station.
+ * Implemented from Attackable,GameOver interfaces.
  */
 public class Specter implements Attackable,GameOver {
     /**

@@ -3,8 +3,8 @@ package game;
 import java.util.Scanner;
 
 /**
- * class TerraVenture which contains all methods and attributes for attack on TerraVenture space-station.
- * implemented from Attackable,GameOver interfaces.
+ * Class TerraVenture which contains all methods and attributes for attack on TerraVenture space-station.
+ * Implemented from Attackable,GameOver interfaces.
  */
 public class TerraVenture implements Attackable,GameOver {
 
