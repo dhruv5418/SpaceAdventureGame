@@ -2,7 +2,11 @@ package game;
 
 import java.util.Scanner;
 
-public class TerraVenture implements Attackable,Dieble {
+/**
+ * class TerraVenture which contains all methods and attributes for attack on TerraVenture space-station.
+ * implemented from Attackable,GameOver interfaces.
+ */
+public class TerraVenture implements Attackable,GameOver {
 
     /**
      * object of scanner class for user input
@@ -47,13 +51,12 @@ public class TerraVenture implements Attackable,Dieble {
         p.recoverHP();
         p.hold();
         spaceShipHp=Player.getPlayerHP();
+        System.out.println("Terra Venture commander is ready with Ghost space ship for the war");
+        p.hold();
         System.out.println("Space ship health is: "+spaceShipHp);
         p.hold();
-        System.out.println("Terra Venture commander is ready with Ghost space ship for the war");
-        System.out.println("Wish you good luck!!!");
-        p.choose_weapon();
-        Player.terraVenture=true;
-        p.attack();
+        System.out.println("What do you want to do?");
+        confirmAttack();
     }
 
     /**
@@ -64,12 +67,38 @@ public class TerraVenture implements Attackable,Dieble {
         int opponentDamage = 0;
         opponentDamage = new java.util.Random().nextInt(3) + 1;
         p.hold();
-        System.out.println("The hawk attacked you and gave " + opponentDamage + " damage!");
+        System.out.println("The Ghost attacked you and gave " + opponentDamage + " damage!");
         spaceShipHp = Player.getPlayerHP();
         spaceShipHp = spaceShipHp - opponentDamage;
         Player.setPlayerHP(spaceShipHp);
         System.out.println("Your space ship HP: " + spaceShipHp);
 
+    }
+
+    /**
+     * Attack confirmation method.
+     */
+    @Override
+    public void confirmAttack() {
+        System.out.println("1. Attack" + "\n" + "2. Abort");
+        choice=sc.nextInt();
+        if(choice==1){
+            Player.Moves = Player.Moves + 1;
+            System.out.println("Bravo");
+            p.hold();
+            System.out.println("Wish you good luck!!!");
+            p.choose_weapon();
+            Player.terraVenture=true;
+            p.fight();
+        }
+        else if(choice==2){
+            Player.Moves = Player.Moves + 1;
+            System.out.println("Aborting mission...");
+            p.die();
+        }
+        else {
+            confirmAttack();
+        }
     }
 
     /**
@@ -111,7 +140,7 @@ public class TerraVenture implements Attackable,Dieble {
     @Override
     public void die() {
         p.hold();
-        System.out.println("Bravo!!!You defeated the Hawk!");
+        System.out.println("Bravo!!!You defeated the Ghost!");
         System.out.println("Congratulation!!!The Terra Venture space station is yours.");
         p.win();
     }

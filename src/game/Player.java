@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
-public class Player implements Attackable,Dieble {
+/**
+ * Contains all the attributes and methods of player for ex-moves,playerHp,fight,win,etc...
+ */
+public class Player implements GameOver {
 
     /**
      * count the total moves used by player.
@@ -204,8 +207,8 @@ public class Player implements Attackable,Dieble {
     /**
      * contains code for attack by player's space ship on opponent space ship.
      */
-    @Override
-    public void attack() {
+
+    public void fight() {
         int playerDamage = 0;
         if (choice == 1) {
             Player.Moves = Player.Moves + 1;
@@ -265,29 +268,25 @@ public class Player implements Attackable,Dieble {
             }
             if (playerHP < 1) {
                 hold();
+                System.out.println("Bad Luck!!!Your space ship is destroyed.");
+                hold();
+                System.out.println("Remember that some weapon has higher killing strength"+"\n"+"You can always choose different weapon!!");
+                hold();
                 die();
             } else if (playerHP > 0) {
-                attack();
+                fight();
             }
         }
 
     }
 
-    @Override
-    public void chooseSpaceShip() {
 
-    }
 
     /**
      * contains code for player's lose.
      */
     @Override
     public void die() {
-
-        System.out.println("Bad Luck!!!Your space ship is destroyed.");
-        hold();
-        System.out.println("Remember that some weapon has higher killing strength"+"\n"+"You can always choose different weapon!!");
-        hold();
         System.out.println("Don't worry, the space station which you won will be yours, unless and until you restart the game");
         hold();
         System.out.println("Available Life="+life);
@@ -376,14 +375,13 @@ public class Player implements Attackable,Dieble {
      * contains code after complete victory at the end of game.
      */
     public void end(){
+
         hold();
         System.out.println("Congratulations!! you have won all 3 space station!!!");
         System.out.println("You have proved your bravery to Babylon 5 space station!!!");
         hold();
         System.out.println("Player Name :" +Introduction.PlayerName);
         System.out.println("Total moves :" + Moves);
-
-
     }
 
 

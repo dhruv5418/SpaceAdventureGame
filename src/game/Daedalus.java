@@ -2,7 +2,11 @@ package game;
 
 import java.util.Scanner;
 
-public class Daedalus implements Attackable,Dieble {
+/**
+ * class Daedalus which contains all methods and attributes for attack on Daedalus space-station.
+ * implemented from Attackable,GameOver interfaces.
+ */
+public class Daedalus implements Attackable,GameOver {
 
     /**
      * object of scanner class for user input
@@ -47,15 +51,39 @@ public class Daedalus implements Attackable,Dieble {
         p.recoverHP();
         p.hold();
         spaceShipHp=Player.getPlayerHP();
-        System.out.println("Space ship health is: "+spaceShipHp);
         p.hold();
         System.out.println("Daedalus commander is ready with Gunner space ship for the war");
-        System.out.println("Wish you good luck!!!");
-        p.choose_weapon();
-        Player.daedalus=true;
-        p.attack();
+        p.hold();
+        System.out.println("Space ship health is: "+spaceShipHp);
+        System.out.println("What do you want to do?");
+        confirmAttack();
 
+    }
 
+    /**
+     * Attack confirmation method.
+     */
+    @Override
+    public void confirmAttack() {
+        System.out.println("1. Attack" + "\n" + "2. Abort");
+        choice=sc.nextInt();
+        if(choice==1){
+            Player.Moves = Player.Moves + 1;
+            System.out.println("Bravo");
+            p.hold();
+            System.out.println("Wish you good luck!!!");
+            p.choose_weapon();
+            Player.daedalus=true;
+            p.fight();
+        }
+        else if(choice==2){
+            Player.Moves = Player.Moves + 1;
+            System.out.println("Aborting mission...");
+            p.die();
+        }
+        else {
+            confirmAttack();
+        }
     }
 
 

@@ -1,8 +1,10 @@
 package game;
 
 import javax.swing.*;
-import java.text.SimpleDateFormat;
 import java.util.Scanner;
+/**
+ * Contains all the details of Player and introduction part of game.
+ */
 public class Introduction extends JPanel  {
 
     /**
@@ -27,26 +29,51 @@ public class Introduction extends JPanel  {
     Scanner sc = new Scanner(System.in);
 
     /**
+     * store user's choice.
+     */
+    private int choice;
+
+    /**
      * constructor
      */
     public Introduction() {
     }
-
 
     /**
      * method to get player's details
      */
     public void playerSetup() {
 
-        System.out.println("Enter your name");
+        System.out.println("Enter your name:-");
         PlayerName = sc.nextLine();
-        System.out.println("Enter your age");
-        Age = sc.nextInt();
-        System.out.println("Enter your Birth date (mm-dd-yyyy):");
+        System.out.println("Hey "+PlayerName);
+        Boolean b=true;
+        do{
+            System.out.println("Enter your age:-");
+            choice = sc.nextInt();
+            if(choice>0&&choice<110){
+                Age=choice;
+                b=false;
+            }else {
+                System.out.println("Please enter correct age.");
+            }
+        }while (b);
+        System.out.println("Enter your Birth date (mm-dd-yyyy):-");
         BirthDate = sc.next();
-        System.out.println("Enter your Gender");
-        Gender = sc.next();
-
+        do {
+            System.out.println("Choose your Gender:-");
+            System.out.println("1. Male" + "\n" + "2. Female");
+            choice = sc.nextInt();
+            if (choice == 1) {
+                Gender = "Male";
+                b=true;
+            } else if (choice == 2) {
+                Gender = "Female";
+               b=true;
+            } else {
+                System.out.println("Please,Choose right option.");
+            }
+        }while (!b);
     }
 
     /**
